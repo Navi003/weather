@@ -1,14 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import ComingDay from "./ComingDay";
 import useForcastStore from "../../store/useForcastStore";
 export default function ComingDays() {
-  console.log("hellooo");
   const { data } = useForcastStore((state) => state);
 
+  const [expand, setExpand] = useState(null);
+
+  function handleExpand(index) {
+    console.log(index);
+    setExpand((prevIndex) => (prevIndex === index ? null : index));
+  }
+
   // const forecastDays = data.forecast.forecastday;
-  const content = data.forecast.forecastday.map((day) => {
+  const content = data.forecast.forecastday.map((day, index) => {
     const dayData = {
       timestamp: day.date_epoch,
       maxTemp: day.day.maxtemp_c,
@@ -21,7 +27,15 @@ export default function ComingDays() {
       iconAlt: day.day.condition.text,
     };
 
-    return <ComingDay key={Math.random()} day={dayData} />;
+    return (
+      <ComingDay
+        onClick={handleExpand}
+        index={index}
+        key={Math.random()}
+        day={dayData}
+        expand={expand}
+      />
+    );
   });
 
   return content;

@@ -3,7 +3,7 @@
 import React from "react";
 import useForcastStore from "../../store/useForcastStore";
 import Image from "next/image";
-export default function Icon({ icon }) {
+export default function Icon({ icon, iconAlt }) {
   const { data } = useForcastStore((state) => state);
 
   console.log(icon);

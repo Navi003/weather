@@ -2,10 +2,8 @@
 import React from "react";
 import useForcastStore from "../../store/useForcastStore";
 
-export default function Day() {
-  const { data } = useForcastStore((state) => state);
-
-  const timestampInSeconds = data?.current.last_updated_epoch;
+export default function Day({ timeStamp }) {
+  const timestampInSeconds = timeStamp;
   const timestampInMilliseconds = timestampInSeconds * 1000;
 
   const date = new Date(timestampInMilliseconds);

@@ -1,24 +1,28 @@
-"use client";
-
 import React from "react";
-import useForcastStore from "../../store/useForcastStore";
 
-export default function Details() {
-  const { data } = useForcastStore((state) => state);
-
-  const {
-    feelslike_c: feelsLike,
-    wind_kph: windKPH,
-    pressure_in: pressureIn,
-    humidity,
-  } = data?.current;
-
+export default function Details({
+  windKPH = null,
+  chanceOfRain = null,
+  humidity,
+  minTemp,
+  pressureIn,
+  feelsLike,
+}) {
   return (
     <div>
-      <div>Real feel : {feelsLike}°</div>
-      <div>Wind Ne : {windKPH} </div>
-      <div>Pressure : {pressureIn}</div>
-      <div>Hemudity: {humidity}</div>
+      {feelsLike ? (
+        <div className="text-lg font-semibold text-blue-700">
+          Real feel : {feelsLike}°
+        </div>
+      ) : (
+        <div className="text-lg font-semibold">
+          Chance of Rain : {chanceOfRain}%
+        </div>
+      )}
+      {minTemp && <div>Min Temp : {minTemp}</div>}
+      <div>Wind Ne : {windKPH} Kph </div>
+      {pressureIn && <div>Pressure : {pressureIn} hpa</div>}
+      <div>Humidity: {humidity}%</div>
     </div>
   );
 }
