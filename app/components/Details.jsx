@@ -9,20 +9,32 @@ export default function Details({
   feelsLike,
 }) {
   return (
-    <div>
+    <div
+      className={`${
+        feelsLike ? "grid grid-cols-[auto_1fr] col-span-2 gap-3" : ""
+      }`}
+    >
       {feelsLike ? (
         <div className="text-lg font-semibold text-blue-700">
           Real feel : {feelsLike}°
         </div>
       ) : (
-        <div className="text-lg font-semibold">
+        <div className="text-lg font-semibold text-blue-700">
           Chance of Rain : {chanceOfRain}%
         </div>
       )}
       {minTemp && <div>Min Temp : {minTemp}</div>}
-      <div>Wind Ne : {windKPH} Kph </div>
-      {pressureIn && <div>Pressure : {pressureIn} hpa</div>}
-      <div>Humidity: {humidity}%</div>
+      <div className="text-lg font-semibold text-blue-700">
+        Wind Ne : {windKPH} Kph{" "}
+      </div>
+      {pressureIn && (
+        <div className="text-lg font-semibold text-blue-700">
+          Pressure : {pressureIn} hpa
+        </div>
+      )}
+      <div className="text-lg font-semibold text-blue-700">
+        Humidity: {humidity}%
+      </div>
     </div>
   );
 }

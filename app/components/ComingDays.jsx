@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ComingDay from "./ComingDay";
+import Spinner from "./Spinner";
 import useForcastStore from "../../store/useForcastStore";
 export default function ComingDays() {
-  const { data } = useForcastStore((state) => state);
-
+  const { data, getGeoLocation } = useForcastStore((state) => state);
   const [expand, setExpand] = useState(null);
+
+  useEffect(() => {
+    getGeoLocation();
+  }, [data, getGeoLocation]);
 
   function handleExpand(index) {
     console.log(index);
@@ -14,7 +18,7 @@ export default function ComingDays() {
   }
 
   // const forecastDays = data.forecast.forecastday;
-  const content = data.forecast.forecastday.map((day, index) => {
+  const content = data?.forecast.forecastday.map((day, index) => {
     const dayData = {
       timestamp: day.date_epoch,
       maxTemp: day.day.maxtemp_c,
@@ -25,6 +29,7 @@ export default function ComingDays() {
       maxWind: day.day.maxwind_kph,
       icon: day.day.condition.icon,
       iconAlt: day.day.condition.text,
+      humidity: day.day.avghumidity,
     };
 
     return (
@@ -38,5 +43,5 @@ export default function ComingDays() {
     );
   });
 
-  return content;
+  return content || <Spinner />;
 }

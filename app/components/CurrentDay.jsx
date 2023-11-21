@@ -8,7 +8,11 @@ import Details from "./Details";
 import Temp from "./Temp";
 import useForcastStore from "../../store/useForcastStore";
 export default function CurrentDay() {
-  const { data } = useForcastStore((state) => state);
+  const { data, getGeoLocation } = useForcastStore((state) => state);
+  const currDate = new Date();
+  const currTimeStamp = currDate.getTime();
+
+  if (!data) return;
 
   const {
     temp_c: temp,
@@ -18,12 +22,12 @@ export default function CurrentDay() {
     humidity,
     wind_kph: windKph,
     pressure_in: pressureIn,
-  } = data.current;
+  } = data?.current;
 
   return (
     <div className="bg-base-blue text-comp-gray">
       <div className="flex gap-8 p-4 text-lg bg-slate-200 date-time">
-        <Day timeStamp={lastUpdatedTimeStamp} />
+        <h5>Today</h5>
         <Time timeStamp={lastUpdatedTimeStamp} />
       </div>
       <div className="grid grid-cols-2 grid-rows-2 p-4">
@@ -35,10 +39,6 @@ export default function CurrentDay() {
           pressureIn={pressureIn}
           feelsLike={feelsLike}
         />
-        <div>
-          <div>Sunrise</div>
-          <div>Sunset</div>
-        </div>
       </div>
     </div>
   );

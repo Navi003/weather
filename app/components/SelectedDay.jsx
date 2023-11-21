@@ -7,7 +7,7 @@ import Temp from "./Temp";
 
 export default function SelectedDay({ day, onClick }) {
   return (
-    <div className="bg-lime-100 text-comp-gray" onClick={onClick}>
+    <div className="bg-lime-100 text-comp-gray fade" onClick={onClick}>
       <div className="flex gap-8 p-4 text-lg bg-slate-200 date-time">
         <Day timeStamp={day.timestamp} />
       </div>
@@ -20,9 +20,13 @@ export default function SelectedDay({ day, onClick }) {
           humidity={day.humidity}
           pressureIn={day.p}
         />
-        <div>
-          <div>Sunrise : {day.sunrise}</div>
-          <div>Sunset : {day.sunset}</div>
+        <div className="mx-auto ">
+          <div className="space-x-1">
+            <span>Sunrise</span>: <span>{day.sunrise}</span>
+          </div>
+          <div className="space-x-2">
+            <spans>Sunset</spans>: <span>{day.sunset}</span>
+          </div>
         </div>
       </div>
     </div>
