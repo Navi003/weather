@@ -20,7 +20,7 @@ export default function NotExpanded({ day }) {
   const dayName = dayNames[date.getDay()];
 
   return (
-    <div className="p-4">
+    <div className="p-4 rounded-lg">
       <h3 className="text-3xl text-center md:mb-6">{dayName.slice(0, 3)}</h3>
 
       <div className="grid justify-between grid-cols-2 md:flex md:flex-col-reverse ">

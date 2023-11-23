@@ -6,19 +6,18 @@ import Spinner from "./Spinner";
 import useForcastStore from "../../store/useForcastStore";
 export default function ComingDays() {
   const { data, getGeoLocation } = useForcastStore((state) => state);
-  const [expand, setExpand] = useState(null);
+  const [expand, setExpand] = useState(0);
 
   useEffect(() => {
     getGeoLocation();
   }, [data, getGeoLocation]);
 
   function handleExpand(index) {
-    console.log(index);
-    setExpand((prevIndex) => (prevIndex === index ? null : index));
+    if (expand === index) return;
+    setExpand((prevIndex) => (prevIndex === index ? -1 : index));
   }
-
   // const forecastDays = data.forecast.forecastday;
-  const content = data?.forecast.forecastday.map((day, index) => {
+  const content = data?.forecast.forecastday.slice(1).map((day, index) => {
     const dayData = {
       timestamp: day.date_epoch,
       maxTemp: day.day.maxtemp_c,
@@ -34,7 +33,7 @@ export default function ComingDays() {
 
     return (
       <ComingDay
-        onClick={handleExpand}
+        onClick={() => handleExpand(index)}
         index={index}
         key={Math.random()}
         day={dayData}
@@ -43,5 +42,11 @@ export default function ComingDays() {
     );
   });
 
-  return content || <Spinner />;
+  return (
+    (
+      <div className="flex flex-col col-span-2 gap-5 md:flex-row ">
+        {content}
+      </div>
+    ) || <Spinner />
+  );
 }

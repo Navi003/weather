@@ -6,8 +6,8 @@ import SelectedDay from "./SelectedDay";
 export default function ComingDay({ day, onClick, index, expand }) {
   return (
     <div
-      className={`flex flex-col cursor-pointer bg-comp-gray md:block md:gap-5  overflow-hidden`}
-      onClick={() => onClick(index)}
+      className={`flex flex-col cursor-pointer bg-comp-gray md:block md:gap-5  overflow-hidden rounded-xl`}
+      onClick={onClick}
     >
       {expand === index ? <SelectedDay day={day} /> : <NotExpanded day={day} />}
     </div>

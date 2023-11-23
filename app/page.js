@@ -10,8 +10,11 @@ export default function Home() {
     <>
       <Header />
       <div className="flex flex-col flex-wrap gap-5 md:flex-row content-main">
-        <CurrentDay /> {/* Default day*/}
-        <ComingDays />
+        <div className="flex flex-col gap-4">
+          <CurrentDay /> {/* Default day*/}
+          <ComingDays />
+        </div>
+        <div className="w-[29.55rem] row-span-3 bg-red-600"></div>
       </div>
     </>
   );

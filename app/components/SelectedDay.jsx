@@ -11,7 +11,7 @@ export default function SelectedDay({ day, onClick }) {
       <div className="flex gap-8 p-4 text-lg bg-slate-200 date-time">
         <Day timeStamp={day.timestamp} />
       </div>
-      <div className="grid grid-cols-2 grid-rows-2 p-4">
+      <div className="grid grid-cols-[auto_auto] grid-rows-[auto_auto]  p-4 pt-0 gap-x-8">
         <Temp maxTemp={day.maxTemp} minTemp={day.minTemp} />
         <Icon icon={day.icon} />
         <Details

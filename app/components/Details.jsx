@@ -9,11 +9,7 @@ export default function Details({
   feelsLike,
 }) {
   return (
-    <div
-      className={`${
-        feelsLike ? "grid grid-cols-[auto_1fr] col-span-2 gap-3" : ""
-      }`}
-    >
+    <div className={`${feelsLike ? "grid  col-span-2" : ""}`}>
       {feelsLike ? (
         <div className="text-lg font-semibold text-blue-700">
           Real feel : {feelsLike}°
@@ -29,7 +25,7 @@ export default function Details({
       </div>
       {pressureIn && (
         <div className="text-lg font-semibold text-blue-700">
-          Pressure : {pressureIn} hpa
+          Pressure : {pressureIn}
         </div>
       )}
       <div className="text-lg font-semibold text-blue-700">
