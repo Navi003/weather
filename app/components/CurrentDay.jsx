@@ -30,17 +30,17 @@ export default function CurrentDay() {
 
     return (
       <div
-        className="flex items-center justify-between gap-8 md:gap-4 md:justify-center md:flex-col"
+        className="flex flex-col items-center justify-center"
         key={Math.random()}
       >
         <div className="text-lg font-bold">{hour}</div>
-        <div className="w-10 h-10 ">
+        <div className="w-10 h-10 p-2 ">
           <Image
             src={`https://${hou.condition.icon}`}
             width={60}
             height={60}
             alt={hou.condition.text}
-            className="object-cover"
+            className="object-cover w-full"
           />
         </div>
         <div>{temp}°</div>
@@ -59,28 +59,30 @@ export default function CurrentDay() {
   } = data?.current;
 
   return (
-    <div className="max-w-5xl bg-base-blue text-comp-gray rounded-xl">
+    <div className="shrink bg-base-blue text-comp-gray rounded-xl md:col-span-2">
       <div className="flex gap-8 p-4 text-lg bg-slate-200 date-time">
         <h5>Today</h5>
         <Time timeStamp={lastUpdatedTimeStamp} />
       </div>
-      <div className="flex justify-between">
+      <div className="flex text-xs">
         <div className="grow md:min-w-max">
-          <div className="grid grid-cols-2 grid-rows-2 p-4">
+          <div className="grid grid-cols-2 grid-rows-[auto_auto_auto] gap-y-3 p-4">
             <Temp maxTemp={temp} />
-            <Icon icon={condition.icon} iconAlt={condition.text} />
+            <Icon
+              className="w-28 h-28 sm:w-36 sm:h-36"
+              icon={condition.icon}
+              iconAlt={condition.text}
+            />
             <Details
               windKPH={windKph}
               humidity={humidity}
               pressureIn={pressureIn}
               feelsLike={feelsLike}
             />
+            <div className="flex col-span-2 overflow-x-auto ">{content}</div>
           </div>
-        </div>
 
-        {/* Hourly weather */}
-        <div className="h-56 p-4 mr-4 overflow-auto overflow-x-auto md:gap-4 md:flex">
-          {content}
+          {/* Hourly weather */}
         </div>
       </div>
     </div>

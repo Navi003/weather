@@ -43,10 +43,8 @@ export default function ComingDays() {
   });
 
   return (
-    (
-      <div className="flex flex-col col-span-2 gap-5 md:flex-row ">
-        {content}
-      </div>
-    ) || <Spinner />
+    <div className="flex flex-col gap-4 md:flex-row">
+      {content || <Spinner />}
+    </div>
   );
 }

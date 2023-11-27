@@ -9,12 +9,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="flex flex-col flex-wrap gap-5 md:flex-row content-main">
+      <div className="md:grid md:grid-cols-[2fr_1.5fr] ">
         <div className="flex flex-col gap-4">
           <CurrentDay /> {/* Default day*/}
           <ComingDays />
         </div>
-        <div className="w-[29.55rem] row-span-3 bg-red-600"></div>
+        <div className="bg-red-600 md:min-w-[300px] ">HEllo world</div>
       </div>
     </>
   );

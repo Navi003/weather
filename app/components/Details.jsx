@@ -9,27 +9,30 @@ export default function Details({
   feelsLike,
 }) {
   return (
-    <div className={`${feelsLike ? "grid  col-span-2" : ""}`}>
-      {feelsLike ? (
-        <div className="text-lg font-semibold text-blue-700">
+    <div className={`flex col-span-2 space-x-8`}>
+      <div>
+        <div className="text-xs font-semibold text-blue-700 md:text-lg sm:text-xl ">
           Real feel : {feelsLike}°
         </div>
-      ) : (
-        <div className="text-lg font-semibold text-blue-700">
+        {/* 
+        <div className="text-xs font-semibold text-blue-700 md:text-lg ">
           Chance of Rain : {chanceOfRain}%
+        </div> */}
+
+        {/* <div>Min Temp : {minTemp}</div> */}
+        <div className="text-xs font-semibold text-blue-700 md:text-lg sm:text-xl ">
+          Wind Ne : {windKPH} Kph
         </div>
-      )}
-      {minTemp && <div>Min Temp : {minTemp}</div>}
-      <div className="text-lg font-semibold text-blue-700">
-        Wind Ne : {windKPH} Kph{" "}
       </div>
-      {pressureIn && (
-        <div className="text-lg font-semibold text-blue-700">
+
+      <div>
+        <div className="text-xs font-semibold text-blue-700 md:text-lg sm:text-xl">
           Pressure : {pressureIn}
         </div>
-      )}
-      <div className="text-lg font-semibold text-blue-700">
-        Humidity: {humidity}%
+
+        <div className="text-xs font-semibold text-blue-700 md:text-lg sm:text-xl ">
+          Humidity: {humidity}%
+        </div>
       </div>
     </div>
   );
