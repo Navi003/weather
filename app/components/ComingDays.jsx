@@ -43,7 +43,7 @@ export default function ComingDays() {
   });
 
   return (
-    <div className="flex flex-col gap-4 md:flex-row">
+    <div className="flex flex-col col-span-2 gap-4 md:flex-row">
       {content || <Spinner />}
     </div>
   );

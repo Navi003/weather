@@ -30,7 +30,7 @@ export default function CurrentDay() {
 
     return (
       <div
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center "
         key={Math.random()}
       >
         <div className="text-lg font-bold">{hour}</div>
@@ -59,13 +59,13 @@ export default function CurrentDay() {
   } = data?.current;
 
   return (
-    <div className="shrink bg-base-blue text-comp-gray rounded-xl md:col-span-2">
+    <div className="md:col-span-2 bg-base-blue text-comp-gray">
       <div className="flex gap-8 p-4 text-lg bg-slate-200 date-time">
         <h5>Today</h5>
         <Time timeStamp={lastUpdatedTimeStamp} />
       </div>
       <div className="flex text-xs">
-        <div className="grow md:min-w-max">
+        <div>
           <div className="grid grid-cols-2 grid-rows-[auto_auto_auto] gap-y-3 p-4">
             <Temp maxTemp={temp} />
             <Icon
@@ -79,7 +79,7 @@ export default function CurrentDay() {
               pressureIn={pressureIn}
               feelsLike={feelsLike}
             />
-            <div className="flex col-span-2 overflow-x-auto ">{content}</div>
+            <div className="flex col-span-2 overflow-x-auto">{content}</div>
           </div>
 
           {/* Hourly weather */}

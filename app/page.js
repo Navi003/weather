@@ -9,12 +9,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="md:grid md:grid-cols-[2fr_1.5fr] ">
-        <div className="flex flex-col gap-4">
-          <CurrentDay /> {/* Default day*/}
-          <ComingDays />
-        </div>
-        <div className="bg-red-600 md:min-w-[300px] ">HEllo world</div>
+      <div className="grid-cols-1 gap-4 md:grid md:grid-cols-[1fr_1fr_auto] ">
+        <CurrentDay /> {/* Default day*/}
+        <ComingDays />
+        <div className="row-span-2 bg-yellow-500 rounded-lg ">HEllo world</div>
       </div>
     </>
   );

@@ -23,11 +23,11 @@ export default function SelectedDay({ day, onClick }) {
           humidity={day.humidity}
           pressureIn={day.p}
         />
-        <div className="mx-auto ">
-          <div className="space-x-1">
+        <div className="flex justify-between col-span-2 ">
+          <div>
             <span>Sunrise</span>: <span>{day.sunrise}</span>
           </div>
-          <div className="space-x-2">
+          <div>
             <spans>Sunset</spans>: <span>{day.sunset}</span>
           </div>
         </div>
